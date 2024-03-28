@@ -22,7 +22,7 @@ export default async function Page({ params, searchParams }: Props) {
     `https://${process.env.MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/chef?q=${encodeURIComponent(searchParams.q)}`,
     {
       headers: {
-        "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY,
+        "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY as string,
       },
       next: { revalidate: 60 },
     }
@@ -32,7 +32,7 @@ export default async function Page({ params, searchParams }: Props) {
     `https://${process.env.MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/recipe?q=${encodeURIComponent(searchParams.q)}`,
     {
       headers: {
-        "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY,
+        "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY!,
       },
       next: { revalidate: 60 },
     }
