@@ -18,11 +18,18 @@ export default async function Page({ params, searchParams }: Props) {
     searchParams.q = "";
   }
 
+  let MICROCMS_API_KEY: string;
+  if (typeof process.env.MICROCMS_API_KEY === "string") {
+    MICROCMS_API_KEY = process.env.MICROCMS_API_KEY;
+  } else {
+    throw new Error("NEXT_PUBLIC_TMDBURL is not defined");
+  }
+
   const chefs = (await fetch(
     `https://${process.env.MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/chef?q=${encodeURIComponent(searchParams.q)}`,
     {
       headers: {
-        "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY as string,
+        "X-MICROCMS-API-KEY": MICROCMS_API_KEY,
       },
       next: { revalidate: 60 },
     }
@@ -32,7 +39,7 @@ export default async function Page({ params, searchParams }: Props) {
     `https://${process.env.MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/recipe?q=${encodeURIComponent(searchParams.q)}`,
     {
       headers: {
-        "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY!,
+        "X-MICROCMS-API-KEY": MICROCMS_API_KEY,
       },
       next: { revalidate: 60 },
     }
