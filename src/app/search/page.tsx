@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import SearchBox from "@/search/SearchBox";
-import SearchChefResults from "@/search/SearchChefResults";
-import SearchRecipeResults from "@/search/SearchRecipeResults";
-import SearchTab from "@/search/SearchTab";
-import { type ChefResponse, type RecipeResponse } from "@/search/types/results";
+import SearchBox from "~/components/search/SearchBox";
+import SearchChefResults from "~/components/search/SearchChefResults";
+import SearchRecipeResults from "~/components/search/SearchRecipeResults";
+import SearchTab from "~/components/search/SearchTab";
+import { type ChefResponse, type RecipeResponse } from "~/components/types/results";
 
 const Title = ({ text, type, q }: { text: string; type: string; q: string }) => {
   return (

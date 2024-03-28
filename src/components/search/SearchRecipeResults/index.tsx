@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { type RecipeResponse } from "@/search/types/results";
+import { type RecipeResponse } from "~/components/types/results";
 
 type Props = {
   recipes?: RecipeResponse;
