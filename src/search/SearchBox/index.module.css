@@ -1,0 +1,18 @@
+.searchField {
+  box-sizing: border-box;
+  padding: 7px 24px 7px 16px;
+  border: 1px solid #eeedef;
+  border-radius: 12px;
+  width: 100%;
+  background: url("/tablericons/search.svg") no-repeat 16px -2em #eeedef;
+  color: #1a1523;
+}
+
+.searchField::placeholder {
+  color: #908e96;
+}
+
+.searchField:placeholder-shown {
+  padding-left: 48px;
+  background-position: 16px center;
+}
