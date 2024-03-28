@@ -2,4 +2,4 @@
 
 ## デプロイ
 
-https://mccms-search-app-git-main-takahiroshinchi.vercel.app
+https://mccms-search-app.vercel.app

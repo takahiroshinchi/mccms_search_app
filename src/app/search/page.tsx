@@ -42,21 +42,32 @@ export default async function Page({ params, searchParams }: Props) {
     params.type = "all";
   }
 
+  let MICROCMS_API_KEY: string;
+  if (typeof process.env.MICROCMS_API_KEY === "string") {
+    MICROCMS_API_KEY = process.env.MICROCMS_API_KEY;
+  } else {
+    throw new Error("NEXT_PUBLIC_TMDBURL is not defined");
+  }
+
   const chefs = (await fetch(
-    `https://29xu9p1l3f.microcms.io/api/v1/chef?limit=3&q=${encodeURIComponent(searchParams.q)}`,
+    `https://${process.env.MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/chef?limit=3&q=${encodeURIComponent(
+      searchParams.q
+    )}`,
     {
       headers: {
-        "X-MICROCMS-API-KEY": "TsyPrNWEO382U41DYsQrZFL2TlIDE2wuNK4v",
+        "X-MICROCMS-API-KEY": MICROCMS_API_KEY,
       },
       next: { revalidate: 60 },
     }
   ).then((res) => res.json())) as ChefResponse;
 
   const recipes = (await fetch(
-    `https://29xu9p1l3f.microcms.io/api/v1/recipe?limit=5&q=${encodeURIComponent(searchParams.q)}`,
+    `https://${process.env.MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/recipe?limit=5&q=${encodeURIComponent(
+      searchParams.q
+    )}`,
     {
       headers: {
-        "X-MICROCMS-API-KEY": "TsyPrNWEO382U41DYsQrZFL2TlIDE2wuNK4v",
+        "X-MICROCMS-API-KEY": MICROCMS_API_KEY,
       },
       next: { revalidate: 60 },
     }
