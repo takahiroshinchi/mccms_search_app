@@ -1,0 +1,17 @@
+.resultGrid {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+}
+
+.resultLink {
+  grid-row: 1 / 5;
+  /* grid-row: span 3; */
+  grid-column: 1;
+  display: grid;
+  grid-template-rows: subgrid;
+}
+
+.resultTags {
+  grid-row: 4 / 5;
+  grid-column: 1;
+}
