@@ -4,7 +4,7 @@ import SearchBox from "~/components/search/SearchBox";
 import SearchChefResults from "~/components/search/SearchChefResults";
 import SearchRecipeResults from "~/components/search/SearchRecipeResults";
 import SearchTab from "~/components/search/SearchTab";
-import { type ChefResponse, type RecipeResponse } from "~/components/types/results";
+import { type ChefResponse, type RecipeResponse } from "~/types/results";
 
 const Title = ({ text, type, q }: { text: string; type: string; q: string }) => {
   return (
