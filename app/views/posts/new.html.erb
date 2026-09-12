@@ -1,0 +1,7 @@
+<%# 規約: PostsController#new → new.html.erb %>
+<h1>新規記事 (Posts#new)</h1>
+
+<%# new も edit も同じフォームを共有するのがスキャフォールドの定石 %>
+<%= render "form", post: @post %>
+
+<p><%= link_to "一覧へ", posts_path %></p>

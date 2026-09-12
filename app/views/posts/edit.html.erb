@@ -1,0 +1,9 @@
+<%# 規約: PostsController#edit → edit.html.erb %>
+<h1>記事編集 (Posts#edit)</h1>
+
+<%= render "form", post: @post %>
+
+<p>
+  <%= link_to "詳細へ", @post %> |
+  <%= link_to "一覧へ", posts_path %>
+</p>
