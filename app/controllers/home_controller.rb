@@ -4,5 +4,6 @@ class HomeController < ApplicationController
   def index
     # インスタンス変数 (@...) はビューから参照できる
     @message = "Hello, Rails!"
+    @memo_count = Memo.count
   end
 end
