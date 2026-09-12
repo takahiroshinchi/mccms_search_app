@@ -1,0 +1,17 @@
+<%# 規約: PostsController#index → app/views/posts/index.html.erb %>
+<p style="color: green"><%= notice %></p>
+
+<h1>記事一覧 (Posts#index)</h1>
+<p>ビューの置き場所規約: <code>app/views/posts/index.html.erb</code></p>
+
+<% @posts.each do |post| %>
+  <%# render post → app/views/posts/_post.html.erb （単数モデル名のパーシャル規約） %>
+  <%= render post %>
+  <p>
+    <%= link_to "詳細", post %>
+    <%= link_to "編集", edit_post_path(post) %>
+  </p>
+  <hr>
+<% end %>
+
+<p><%= link_to "新規作成", new_post_path %></p>

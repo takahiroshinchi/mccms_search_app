@@ -1,0 +1,11 @@
+<%# 規約: PostsController#show → app/views/posts/show.html.erb %>
+<p style="color: green"><%= notice %></p>
+
+<h1>記事詳細 (Posts#show)</h1>
+<%= render @post %>
+
+<p>
+  <%= link_to "編集", edit_post_path(@post) %> |
+  <%= link_to "一覧へ", posts_path %>
+  <%= button_to "削除", @post, method: :delete %>
+</p>
