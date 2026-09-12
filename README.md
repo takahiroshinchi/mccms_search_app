@@ -15,6 +15,12 @@ bin/rails server
 - Memo（手書き最小 CRUD）: http://localhost:3000/memos
 - Post（scaffold フル REST）: http://localhost:3000/posts
 
+## ハンズオン（おすすめ）
+
+初めて触る場合は、次を上から順に進めてください。
+
+→ **[docs/20260912_1326_Rails基本構成ハンズオン.md](docs/20260912_1326_Rails基本構成ハンズオン.md)**
+
 ## 学習の進め方（コミット / docs）
 
 ### 基礎（MVC の最小）
