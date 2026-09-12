@@ -1,5 +1,28 @@
 <h1><%= @message %></h1>
-<p>このページは <code>HomeController#index</code> → <code>app/views/home/index.html.erb</code> で表示されています。</p>
 <p>流れ: <strong>Route → Controller → View</strong></p>
-<p>現在のメモ件数: <strong><%= @memo_count %></strong>（Model からの読み取り）</p>
-<p><a href="<%= memos_path %>">メモ一覧へ（最小 CRUD）</a></p>
+<p>このページ: <code>HomeController#index</code> → <code>app/views/home/index.html.erb</code></p>
+
+<h2>学べる2つのリソース</h2>
+<ul>
+  <li>
+    <a href="<%= memos_path %>">Memo（手書きの最小 CRUD）</a>
+    — 今 <%= @memo_count %> 件 /
+    index・create・destroy だけ
+  </li>
+  <li>
+    <a href="<%= posts_path %>">Post（scaffold のフル REST）</a>
+    — 今 <%= @post_count %> 件 /
+    7アクション一式
+  </li>
+</ul>
+
+<h2>規約ドキュメント</h2>
+<p>リポジトリの <code>docs/</code> をコミット順に読むと、規約とファイルの対応が分かります。</p>
+<ol>
+  <li><code>docs/01_naming_conventions.md</code> … 命名 ↔ パス</li>
+  <li><code>docs/02_scaffold_model.md</code> … Model + Migration</li>
+  <li><code>docs/03_restful_routes.md</code> … resources の7ルート</li>
+  <li><code>docs/04_scaffold_controller.md</code> … Controller</li>
+  <li><code>docs/05_scaffold_views.md</code> … index / show / _post</li>
+  <li><code>docs/06_scaffold_form_partial.md</code> … new / edit / _form</li>
+</ol>

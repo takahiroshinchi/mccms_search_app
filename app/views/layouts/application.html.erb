@@ -8,10 +8,12 @@
     <%= stylesheet_link_tag "application" %>
   </head>
   <body>
-    <header style="padding: 1rem; border-bottom: 1px solid #ddd;">
-      <a href="/">Rails Basics</a>
+    <header style="padding: 1rem; border-bottom: 1px solid #ddd; display: flex; gap: 1rem; flex-wrap: wrap;">
+      <%= link_to "Rails Basics", root_path %>
+      <%= link_to "Memos（手書き）", memos_path %>
+      <%= link_to "Posts（scaffold）", posts_path %>
     </header>
-    <main style="padding: 1.5rem; max-width: 40rem;">
+    <main style="padding: 1.5rem; max-width: 42rem;">
       <%= yield %>
     </main>
   </body>
