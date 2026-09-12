@@ -80,3 +80,4 @@ app/views/memos/index.html.erb  … HTML を組み立てて返す
 - `--minimal` のため Action Mailer / Cable / Job / Hotwire などは入っていません
 - DB は SQLite（ファイルは gitignore。`db:prepare` で再作成）
 - 本番用の秘密鍵管理は簡略化しています（学習用途）
+- Vercel 連携は Next.js 前提だったため、`vercel.json` で静的案内ページ（`public/`）だけをデプロイする

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo 'Rails learning app: skip npm install'",
+  "buildCommand": "echo 'Rails learning app: skip Next.js build'",
+  "outputDirectory": "public"
+}
