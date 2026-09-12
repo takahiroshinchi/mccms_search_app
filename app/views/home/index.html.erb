@@ -1,0 +1,5 @@
+<h1><%= @message %></h1>
+<p>このページは <code>HomeController#index</code> → <code>app/views/home/index.html.erb</code> で表示されています。</p>
+<p>流れ: <strong>Route → Controller → View</strong></p>
+<p>現在のメモ件数: <strong><%= @memo_count %></strong>（Model からの読み取り）</p>
+<p><a href="<%= memos_path %>">メモ一覧へ（最小 CRUD）</a></p>

@@ -1,0 +1,30 @@
+/* 学習用の最小スタイル */
+body {
+  margin: 0;
+  font-family: Georgia, "Hiragino Mincho ProN", "Yu Mincho", serif;
+  color: #1a1a1a;
+  background: #f7f4ef;
+}
+
+a {
+  color: #0b5fff;
+}
+
+ul {
+  padding-left: 1.25rem;
+}
+
+form {
+  margin: 1rem 0;
+}
+
+input[type="text"] {
+  padding: 0.4rem 0.6rem;
+  width: min(100%, 20rem);
+}
+
+button,
+input[type="submit"] {
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
