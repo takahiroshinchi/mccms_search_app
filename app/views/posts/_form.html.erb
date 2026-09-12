@@ -1,0 +1,24 @@
+<%# 規約: render "form", post: @post → 同じフォルダの _form.html.erb %>
+<%# form_with model: post は POST /posts または PATCH /posts/:id を自動選択する %>
+<%= form_with model: post do |f| %>
+  <% if post.errors.any? %>
+    <div style="color: #b00020">
+      <p><%= post.errors.count %>件のエラーがあります</p>
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :title, "タイトル" %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body, "本文" %><br>
+    <%= f.text_area :body, rows: 5 %>
+  </p>
+  <p><%= f.submit post.persisted? ? "更新する" : "作成する" %></p>
+<% end %>

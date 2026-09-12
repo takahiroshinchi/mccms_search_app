@@ -1,83 +1,67 @@
-# Rails 基本構成（最小）を学ぶリポジトリ
+# Rails 基本構成・規約を学ぶリポジトリ
 
-`rails new --minimal` から始め、コミットを段階的に追うと Rails の基本が分かります。
+`rails new --minimal` から始め、**規約とファイル配置の対応**をコミット単位で追えます。
 
 ## 起動方法
 
 ```bash
 bundle install
-bin/rails db:prepare   # DB作成 + マイグレーション
-bin/rails db:seed      # サンプルメモ（任意）
+bin/rails db:prepare
+bin/rails db:seed
 bin/rails server
 ```
 
 - トップ: http://localhost:3000/
-- メモ CRUD: http://localhost:3000/memos
-- ヘルスチェック: http://localhost:3000/up
+- Memo（手書き最小 CRUD）: http://localhost:3000/memos
+- Post（scaffold フル REST）: http://localhost:3000/posts
 
-## コミットで追う学習パス
+## 学習の進め方（コミット / docs）
 
-| 段階 | コミット | 理解すること |
-|------|----------|--------------|
-| 1 | スケルトン生成 | `app/` `config/` `db/` など標準ディレクトリ |
-| 2 | Hello World | **Route → Controller → View** |
-| 3 | Model + Migration | Active Record と DB スキーマ |
-| 4 | 最小 CRUD | 一覧・作成・削除の一連の流れ |
-| 5 | この README | 全体の対応関係の総まとめ |
+### 基礎（MVC の最小）
 
-## リクエストの流れ（MVC）
+| 段階 | 内容 |
+|------|------|
+| 1 | 最小スケルトン |
+| 2 | Route → Controller → View |
+| 3 | Model + Migration（Memo） |
+| 4 | 手書きの最小 CRUD（Memo） |
+| 5 | README 総まとめ |
 
-```
-ブラウザ
-  │  GET /memos
-  ▼
-config/routes.rb          … URL とアクションの対応
-  │  resources :memos
-  ▼
-MemosController#index     … データを用意し、ビューを選ぶ
-  │  @memos = Memo.order(...)
-  ▼
-Memo (Model)              … DB の memos テーブルを操作
-  │
-  ▼
-app/views/memos/index.html.erb  … HTML を組み立てて返す
-```
+### 規約とスキャフォールド（Post）
 
-## 主要ディレクトリ早見表
+| コミット | docs | 理解すること |
+|----------|------|--------------|
+| 規約① | `docs/01_naming_conventions.md` | 命名 ↔ ファイル / テーブル |
+| scaffold① | `docs/02_scaffold_model.md` | Model + Migration |
+| scaffold② | `docs/03_restful_routes.md` | `resources` の7ルート |
+| scaffold③ | `docs/04_scaffold_controller.md` | 7アクションの Controller |
+| scaffold④ | `docs/05_scaffold_views.md` | index / show / `_post` |
+| scaffold⑤ | `docs/06_scaffold_form_partial.md` | new / edit / `_form` |
 
-```
-.
-├── app/
-│   ├── controllers/     # リクエスト処理（C）
-│   ├── models/          # データとバリデーション（M）
-│   ├── views/           # 表示テンプレート（V）
-│   └── assets/          # CSS など
-├── config/
-│   ├── routes.rb        # ルーティング
-│   ├── database.yml     # DB接続設定
-│   └── environments/    # 環境別設定
-├── db/
-│   ├── migrate/         # スキーマ変更の履歴
-│   ├── schema.rb        # 現在のスキーマのスナップショット
-│   └── seeds.rb         # 初期データ
-├── bin/rails            # rails コマンド入口
-├── Gemfile              # 依存 gem
-└── config.ru            # Webサーバ（Rack）入口
-```
+## 規約の核心（1語から全部決まる）
 
-## このアプリで触るファイル
+`Post` と決めると:
 
-| やりたいこと | 見るファイル |
-|--------------|--------------|
-| URL を増やす | `config/routes.rb` |
-| 画面のロジック | `app/controllers/*_controller.rb` |
-| HTML | `app/views/**/*.html.erb` |
-| DB の列を増やす | `db/migrate/` に新規マイグレーション |
-| バリデーション | `app/models/memo.rb` |
+| 種類 | 名前 | パス |
+|------|------|------|
+| Model | `Post` | `app/models/post.rb` |
+| Table | `posts` | `db/migrate/*_create_posts.rb` |
+| Controller | `PostsController` | `app/controllers/posts_controller.rb` |
+| Views | `posts/*` | `app/views/posts/` |
+| Routes | `resources :posts` | `config/routes.rb` |
+
+`PostsController#show` → 自動で `app/views/posts/show.html.erb` を探します。
+
+## Memo と Post の対比
+
+| | Memo | Post |
+|--|------|------|
+| 作り方 | 手書き | `rails g scaffold` |
+| ルート | `only: %i[index create destroy]` | 7アクション全部 |
+| 向いている学び | 部品のつながり | 規約どおりの全体像 |
 
 ## 補足
 
-- `--minimal` のため Action Mailer / Cable / Job / Hotwire などは入っていません
-- DB は SQLite（ファイルは gitignore。`db:prepare` で再作成）
-- 本番用の秘密鍵管理は簡略化しています（学習用途）
-- Vercel 連携は Next.js 前提だったため、`vercel.json` で静的案内ページ（`public/`）だけをデプロイする
+- `--minimal` のため Mailer / Cable / Job / Hotwire は未使用
+- DB は SQLite（`db:prepare` で再作成）
+- Vercel は静的 `public/` のみ（Rails 本体はローカルで起動）

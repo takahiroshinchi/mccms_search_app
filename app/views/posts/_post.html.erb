@@ -1,0 +1,5 @@
+<%# 規約: render @post / render post → _post.html.erb（先頭アンダースコア） %>
+<div id="<%= dom_id(post) %>">
+  <p><strong>タイトル:</strong> <%= post.title %></p>
+  <p><strong>本文:</strong> <%= post.body %></p>
+</div>
